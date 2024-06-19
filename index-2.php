@@ -13,8 +13,7 @@
     </form>
 
     <?php
-        $month = isset($_GET['month']);
-        $have_months = null;
+        $month = $_GET['month'];
 
         switch ($month) {
             case ("มกราคม") :
@@ -24,32 +23,23 @@
             case ("สิงหาคม") :
             case ("ตุลาคม") :
             case ("ธันวาคม") :
-                $days = 31;
-                $have_months = 1;
+                echo "เดือน $month มี 31 วัน";
                 break;
             case ("เมษายน") :
             case ("มิถุนายน") :
             case ("กันยายน") :
             case ("พฤศจิกายน") :
-                $days = 30;
-                $have_months = 1;
+                echo "เดือน $month มี 30 วัน";
                 break;
             case ("กุมภาพันธ์") :
-                $days = "28 หรือ 29";
-                $have_months = 1;
+                echo "เดือน $month มี 28 หรือ 29 วัน";
+                break;
+            case ("blank") :
                 break;
             default:
-                $have_months = 0;
+                echo "ไม่มีเดือน! กรุณาใส่ใหม่";
         }
-
-        if ($have_months = 1) {
-            echo "เดือน $month มี $days วัน";
-            $have_months = 0;
-        }
-        if ($have_months = 0) {
-            echo "ไม่มีเดือน! กรุณาใส่ใหม่";
-        }
-
     ?>
+
 </body>
 </html>
