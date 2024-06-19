@@ -34,8 +34,6 @@
             case ("กุมภาพันธ์") :
                 echo "เดือน $month มี 28 หรือ 29 วัน";
                 break;
-            case ("blank") :
-                break;
             default:
                 echo "ไม่มีเดือน! กรุณาใส่ใหม่";
         }
