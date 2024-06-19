@@ -7,49 +7,48 @@
 </head>
 <body>
     <form method="get">
-        เดือน: <input type="text" name="month">
-        </br>
+        เดือน: <input type="text" name="month" value="<?php echo isset($_GET['month']) ? htmlspecialchars($_GET['month']) : ''; ?>">
+        <br>
         <input type="submit" value="ตกลง">
     </form>
 
     <?php
-        $month = isset($_GET['month']);
-        $have_months = null;
+        if (isset($_GET['month'])) {
+            $month = $_GET['month'];
+            $have_months = null;
 
-        switch ($month) {
-            case ("มกราคม") :
-            case ("มีนาคม") :
-            case ("พฤษภาคม") :
-            case ("กรกฎาคม") :
-            case ("สิงหาคม") :
-            case ("ตุลาคม") :
-            case ("ธันวาคม") :
-                $days = 31;
-                $have_months = 1;
-                break;
-            case ("เมษายน") :
-            case ("มิถุนายน") :
-            case ("กันยายน") :
-            case ("พฤศจิกายน") :
-                $days = 30;
-                $have_months = 1;
-                break;
-            case ("กุมภาพันธ์") :
-                $days = "28 หรือ 29";
-                $have_months = 1;
-                break;
-            default:
-                $have_months = 0;
-        }
+            switch ($month) {
+                case "มกราคม":
+                case "มีนาคม":
+                case "พฤษภาคม":
+                case "กรกฎาคม":
+                case "สิงหาคม":
+                case "ตุลาคม":
+                case "ธันวาคม":
+                    $days = 31;
+                    $have_months = true;
+                    break;
+                case "เมษายน":
+                case "มิถุนายน":
+                case "กันยายน":
+                case "พฤศจิกายน":
+                    $days = 30;
+                    $have_months = true;
+                    break;
+                case "กุมภาพันธ์":
+                    $days = "28 หรือ 29";
+                    $have_months = true;
+                    break;
+                default:
+                    $have_months = false;
+            }
 
-        if ($have_months = 1) {
-            echo "เดือน $month มี $days วัน";
-            $have_months = 0;
+            if ($have_months) {
+                echo "เดือน $month มี $days วัน";
+            } else {
+                echo "ไม่มีเดือน! กรุณาใส่ใหม่";
+            }
         }
-        if ($have_months = 0) {
-            echo "ไม่มีเดือน! กรุณาใส่ใหม่";
-        }
-
     ?>
 </body>
 </html>
