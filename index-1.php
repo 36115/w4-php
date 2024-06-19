@@ -19,13 +19,13 @@
     $team2 = $_GET['team2'];
 
     if ($team1 > $team2) {
-        echo "ทีม 1 ชนะ";
+        echo "ทีม 1 ชนะ!";
     }
     if ($team2 > $team1) {
-        echo "ทีม 2 ชนะ";
+        echo "ทีม 2 ชนะ!";
     }
     if ($team1 == $team2) {
-        echo "ทั้งคู่เสมอ";
+        echo "ทั้งคู่เสมอ!";
     }
 
     ?>
